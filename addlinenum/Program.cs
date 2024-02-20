@@ -5,12 +5,22 @@
     {
         if (args.Length == 1)
         {
-            // コマンドライン引数から
-            WriteConsoleProsess(args[0]);
+            // コマンドラインから起動
+            var sourceFilePath = args[0];
+
+            if (System.IO.File.Exists(sourceFilePath) == false)
+            {
+                Console.Error.WriteLine("file not found!");
+                return;
+            }
+
+            WriteConsoleProsess(sourceFilePath);
+            return;
         }
+
         else
         {
-            // 対話形式で入力ファイルを受け付ける場合
+            // 対話形式で起動
             var sourceFilePath = RequestInputSourceFilePath();
 
             switch (RequestInputOutputStream())
@@ -18,6 +28,10 @@
                 case OutputStream.Console:
 
                     WriteConsoleProsess(sourceFilePath);
+
+                    // ポーズ
+                    Console.WriteLine("press any key to exit");
+                    Console.ReadLine();
 
                     break;
 
@@ -37,6 +51,7 @@
                     break;
             }
         }
+
     }
 
 
