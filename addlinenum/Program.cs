@@ -15,9 +15,7 @@
             }
 
             WriteConsoleProsess(sourceFilePath);
-            return;
         }
-
         else
         {
             // 対話形式で起動
