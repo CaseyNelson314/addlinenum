@@ -2,15 +2,15 @@
 
 行先頭に行番号をつける CLI アプリ
 
-![image](https://github.com/CaseyNelson314/addlinenum/assets/91818705/55a39131-2eb3-45f2-a5d5-eccad8ba25fa)
-
 ## Usage
 
 以下の URL から実行ファイルを取得できます. 対話形式, コマンドライン形式, の 二通りで起動できます. 
 
-https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.0/addlinenum.exe
+https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.1/addlinenum.exe
 
 ### 対話形式
+
+![Animationsd](https://github.com/CaseyNelson314/addlinenum/assets/91818705/204a819f-8d42-4a7c-9377-fb51989d26c0)
 
 実行ファイルをダブルクリックすると対話形式で起動できます. 起動するといくつか入力事項を求められます. 
 
@@ -29,9 +29,6 @@ https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.0/addlinenum
 3. `file name (output.txt) >`
 
    2 でファイルを選択した場合, 出力ファイル名を指定します. 何も入力せず Enter を押した場合 output.txt になります. 出力先はソースファイルのあるフォルダになります. 
-
-![image](https://github.com/CaseyNelson314/addlinenum/assets/91818705/afa3bdb1-760f-4c39-9ddf-cb8a437f105b)
-
 
 ### コマンドラインから
 
