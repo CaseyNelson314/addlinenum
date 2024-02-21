@@ -27,11 +27,8 @@
 
                     WriteConsoleProsess(sourceFilePath);
 
-                    // ポーズ
-                    Console.WriteLine("press any key to exit");
-                    Console.ReadLine();
+                    for (; ; ) { }
 
-                    break;
 
                 case OutputStream.File:
 
