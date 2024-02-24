@@ -6,7 +6,7 @@
 
 以下の URL から実行ファイルを取得できます. 対話形式, コマンドライン形式, の 二通りで起動できます. 
 
-<https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.4/addlinenum.exe>
+<https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.5/addlinenum.exe>
 
 ### 対話形式
 
