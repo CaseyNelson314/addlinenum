@@ -10,7 +10,7 @@
 
 ### 対話形式
 
-![Animationsd](https://github.com/CaseyNelson314/addlinenum/assets/91818705/204a819f-8d42-4a7c-9377-fb51989d26c0)
+![Animationsd](https://github.com/CaseyNelson314/addlinenum/assets/91818705/ea5d0599-9472-4041-a3c9-323b78bb177f)
 
 実行ファイルをダブルクリックすると対話形式で起動できます. 起動するといくつか入力事項を求められます. 
 
@@ -41,15 +41,15 @@ cd 実行ファイルがあるディレクトリ
 実行ファイルの第一引数にファイルパスを渡すと, 行番号を付与したファイルの中身が出力されます. 
 
 ```sh
-./addlinenum.exe main.cpp
+.\addlinenum.exe main.cpp
 ```
 
-![image](https://github.com/CaseyNelson314/addlinenum/assets/91818705/07f12479-0286-43fd-98af-a9b1ac71fea4)
+![image](https://github.com/CaseyNelson314/addlinenum/assets/91818705/17faff29-78c7-4e1a-a05a-0023fcb094a5)
 
 > パイプラインを使うと結果をファイルに書き込めます. 
 >
 > ```sh
-> ./addlinenum.exe main.cpp > output.txt
+> .\addlinenum.exe main.cpp > output.txt
 > cat .\output.txt
 > 0:  #include <iostream>
 > 1:
@@ -62,7 +62,7 @@ cd 実行ファイルがあるディレクトリ
 > 引数を渡さない場合, 対話形式で起動されます. 
 >
 > ```sh
-> ./addlinenum.exe
+> .\addlinenum.exe
 > source file path >
 > ```
 
