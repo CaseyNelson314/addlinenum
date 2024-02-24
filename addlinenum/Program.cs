@@ -61,7 +61,7 @@
 
         foreach (var (line, index) in lines.Select((line, index) => (line, index)))
         {
-            Console.WriteLine(index.ToString($"D{digits}") + ":  " + line);
+            Console.WriteLine((index + 1).ToString($"D{digits}") + ":  " + line);
         }
     }
 
