@@ -72,7 +72,7 @@
 
         foreach (var (line, index) in lines.Select((line, index) => (line, index)))
         {
-            writer.WriteLine(index.ToString($"D{digits}") + ":  " + line);
+            writer.WriteLine((index + 1).ToString($"D{digits}") + ":  " + line);
         }
     }
 
