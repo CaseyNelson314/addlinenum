@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <div className="flex bg-gray-900 overflow-hidden">
+      <div className="flex overflow-hidden">
         <div className="flex-1 overflow-hidden m-100">
           <Editor
             height="100vh"
