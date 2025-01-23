@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import "./App.css";
@@ -7,11 +7,12 @@ const defaultSource = `#include <iostream>
 
 int main()
 {
-  std::cout << "Hello, World!" << std::endl;
-  return 0;
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
 }`;
 
 function App() {
+  const srcRef = useRef<editor.IStandaloneCodeEditor | null>(null);
   const distRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
   const [, setText] = useState<string | undefined>("");
@@ -36,10 +37,11 @@ function App() {
 
   return (
     <>
-      <div className="flex bg-gray-900 text-white">
+      <div className="flex bg-gray-900">
         <div className="flex-1">
           <Editor
             height="100vh"
+            width="100%"
             defaultLanguage="cpp"
             defaultValue={defaultSource}
             theme="vs-dark"
@@ -50,11 +52,15 @@ function App() {
               tabSize: 4,
             }}
             onChange={onSourceChange}
+            onMount={(editor) => {
+              srcRef.current = editor;
+            }}
           />
         </div>
         <div className="flex-1">
           <Editor
             height="100vh"
+            width="100%"
             defaultLanguage="cpp"
             defaultValue=""
             theme="vs-dark"
