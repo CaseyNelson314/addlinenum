@@ -1,73 +1,50 @@
-# addlinenum
+# React + TypeScript + Vite
 
-行先頭に行番号をつける CLI アプリ
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Usage
+Currently, two official plugins are available:
 
-以下の URL から実行ファイルを取得できます. 対話形式, コマンドライン形式, の 二通りで起動できます. 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-<https://github.com/CaseyNelson314/addlinenum/releases/download/v1.0.6/addlinenum.exe>
+## Expanding the ESLint configuration
 
-### 対話形式
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-![Animationsd](https://github.com/CaseyNelson314/addlinenum/assets/91818705/ea5d0599-9472-4041-a3c9-323b78bb177f)
+- Configure the top-level `parserOptions` property like this:
 
-実行ファイルをダブルクリックすると対話形式で起動できます. 起動するといくつか入力事項を求められます. 
-
-1. `source file path >`
-
-   行番号を付与する基となるファイルの絶対パスを指定します. 
-
-2. `output stream: console[c] / file[f] (c) >`
-
-   行番号を付与したデータの出力先を指定します. 何も入力せず Enter を押した場合コンソールへ出力します. 
-
-   `c`: コンソール画面
-
-   `f`: ファイル
-
-3. `file name (output.txt) >`
-
-   2 でファイルを選択した場合, 出力ファイル名を指定します. 何も入力せず Enter を押した場合 output.txt になります. 出力先はソースファイルのあるフォルダになります. 
-
-### コマンドラインから
-
-実行ファイルがあるディレクトリへ移動
-
-```sh
-cd 実行ファイルがあるディレクトリ
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-実行ファイルの第一引数にファイルパスを渡すと, 行番号を付与したファイルの中身が出力されます. 
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```sh
-.\addlinenum.exe main.cpp
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-![image](https://github.com/CaseyNelson314/addlinenum/assets/91818705/17faff29-78c7-4e1a-a05a-0023fcb094a5)
-
-> パイプラインを使うと結果をファイルに書き込めます. 
->
-> ```sh
-> .\addlinenum.exe main.cpp > output.txt
-> cat .\output.txt
-> 0:  #include <iostream>
-> 1:
-> 2:  int main() {
-> 3:      std::cout << "Hello, World!" << std::endl;
-> 4:      return 0;
-> 5:  }
-> ```
-
-> 引数を渡さない場合, 対話形式で起動されます. 
->
-> ```sh
-> .\addlinenum.exe
-> source file path >
-> ```
-
-> 実行ファイルがあるディレクトリを Path 環境変数に追加すると, いつでもどこでも実行ファイルを呼び出せます. 
->
-> ```sh
-> addlinenum main.cpp
-> ```
