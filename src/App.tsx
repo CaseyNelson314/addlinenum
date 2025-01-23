@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import FloatingLink from "./FloatingLink";
@@ -15,22 +15,20 @@ int main()
 function App() {
   const distRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
-  const [, setText] = useState<string | undefined>("");
-
   const addLineNumber = (raw: string) => {
     const lines = raw.split("\n");
     const nDigits = Math.floor(Math.log10(lines.length)) + 1;
     return lines
+      .map((line) => line.replace(/\t/g, "    "))
       .map((line, i) => {
         return (i + 1).toString().padStart(nDigits, " ") + ":  " + line;
       })
       .join("\n");
   };
 
-  const onSourceChange = (t: string | undefined) => {
-    setText(t);
+  const onSourceChange = (text: string | undefined) => {
     const model = distRef.current?.getModel();
-    model?.setValue(addLineNumber(t || ""));
+    model?.setValue(addLineNumber(text || ""));
   };
 
   return (
@@ -48,6 +46,8 @@ function App() {
               minimap: { enabled: false },
               folding: false,
               tabSize: 4,
+              insertSpaces: true,
+              autoIndent: "full",
             }}
             onChange={onSourceChange}
           />
@@ -72,7 +72,10 @@ function App() {
           />
         </div>
       </div>
-      <FloatingLink icon="github.png" url="https://github.com/CaseyNelson314/addlinenum" />
+      <FloatingLink
+        icon="github.png"
+        url="https://github.com/CaseyNelson314/addlinenum"
+      />
     </>
   );
 }

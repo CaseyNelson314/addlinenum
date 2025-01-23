@@ -9,3 +9,19 @@
 Word 等に張り付けると殺伐としたレポートに彩が。
 
 ![image](https://github.com/user-attachments/assets/8f268055-c156-498e-8433-40d732c4783c)
+
+## ローカル実行
+
+セットアップ
+
+```bash
+git clone https://github.com/CaseyNelson314/addlinenum.git
+cd addlinenum
+npm install
+```
+
+ローカルサーバー起動
+
+```bash
+npm run dev
+```
